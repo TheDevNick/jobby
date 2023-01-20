@@ -10,6 +10,8 @@ import {
   LOGIN_USER_ERROR,
   LOGIN_USER_BEGIN,
   LOGIN_USER_SUCCESS,
+  TOGGLE_SIDEBAR,
+  LOGOUT_USER
 } from "./actions";
 
 const token = localStorage.getItem("token");
@@ -19,6 +21,7 @@ const userLocation = localStorage.getItem("location");
 const initialState = {
   isLoading: false,
   showAlert: false,
+  showSidebar: false,
   alertText: "",
   alertType: "",
   user: user ? JSON.parse(user) : null,
@@ -113,9 +116,18 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
+  const logoutUser = () => {
+    dispatch({ type: LOGOUT_USER})
+    removeUserFromLocalStorage()
+  }
+  
+  const toggleSidebar = () => {
+    dispatch({ type: TOGGLE_SIDEBAR})
+  }
+
   return (
     <AppContext.Provider
-      value={{ ...state, displayAlert, registerUser, loginUser }}
+      value={{ ...state, displayAlert, registerUser, loginUser, toggleSidebar, logoutUser }}
     >
       {children}
     </AppContext.Provider>
