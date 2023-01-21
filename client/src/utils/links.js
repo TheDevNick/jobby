@@ -25,7 +25,7 @@ const links = [
   {
     id: 4,
     text: "profile",
-    path: "add-job",
+    path: "profile",
     icon: <ImProfile />,
   },
 ];

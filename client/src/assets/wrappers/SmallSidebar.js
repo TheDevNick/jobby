@@ -68,9 +68,10 @@ const Wrapper = styled.aside`
   }
   .active {
     color: var(--grey-900);
+    border-bottom: 1px solid var(--primary-500);
   }
   .active .icon {
     color: var(--primary-500);
   }
-`
+`;
 export default Wrapper
